@@ -35,7 +35,11 @@ module.exports = Plugin => class DemoPlugin extends Plugin {
 			if (!creator) return this.client.log.warn(`Can't create text transcript for ticket #${ticket.number} due to missing creator`);
 
 			const lines = [];
+<<<<<<< HEAD
 			lines.push(`Ticket ${ticket.number}, created by ${this.client.cryptr.decrypt(creator.username)}#${creator.discriminator}, ${dtf.fill('DD-MM-YYYY HH:mm:ss', new Date(ticket.createdAt), true)} UTC\n`);
+=======
+			lines.push(`Ticket ${ticket.number}, created by ${this.client.cryptr.decrypt(creator.username)}#${creator.discriminator}, ${dtf.fill('YYYY-MM-DD HH:mm:ss', new Date(ticket.createdAt), true)} UTC\n`);
+>>>>>>> better-logs
 
 			let closer;
 
@@ -84,7 +88,11 @@ module.exports = Plugin => class DemoPlugin extends Plugin {
 
 			const attachment = new MessageAttachment(Buffer.from(lines.join('\n')), channel_name + '.txt');
 
+<<<<<<< HEAD
 			var log_msg = `Ticket ${ticket.number}, created by ${this.client.cryptr.decrypt(creator.username)}#${creator.discriminator} \`${creator.user}\`\nCategory: ${category.name}\nCreated at: ${dtf.fill('DD-MM-YYYY HH:mm:ss', new Date(ticket.createdAt), true)} UTC`
+=======
+			const log_msg = `Ticket ${ticket.number}, created by ${this.client.cryptr.decrypt(creator.username)}#${creator.discriminator} \`${creator.user}\`\nCategory: ${category.name}\nCreated at: ${dtf.fill('YYYY-MM-DD HH:mm:ss', new Date(ticket.createdAt), true)} UTC`
+>>>>>>> better-logs
 			if (this.config.channels[guild.id]) {
 				try {
 					const g = await this.client.guilds.fetch(guild.id);
@@ -111,7 +119,11 @@ module.exports = Plugin => class DemoPlugin extends Plugin {
 				}
 			}
 
+<<<<<<< HEAD
 			var log_msg = `Your ticket has been closed. Here\'s a transcript of the ticket:`
+=======
+			const user_msg = `Your ticket has been closed. Here\'s the transcript of the ticket:`
+>>>>>>> better-logs
 			try {
 				const user = await this.client.users.fetch(ticket.creator);
 				user.send({ files: [attachment], content: user_msg});
